@@ -1,5 +1,5 @@
 {
-  "name": "BlackJack",
+  "name": "blackjack-dealer-logic",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Steven <steventruong1995@yahoo.com>",
@@ -10,10 +10,10 @@
     "webpack-dev-server": "^3.9.0"
   },
   "scripts": {
-    "build": "webpack --mode production --content-base docs/ --output-path docs/",
     "start": "webpack-dev-server --mode development --content-base docs/ --open --hot"
   },
   "dependencies": {
-    "blackjack-dealer-logic": "^1.1.4"
+    "blackjack-dealer-logic": "^1.1.4",
+    "playing-card-deck-generator": "^2.0.1"
   }
 }

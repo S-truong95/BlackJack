@@ -1,0 +1,39 @@
+*{
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+#app{
+    height: 100vh;
+    width: 100%;
+    background-color: green;
+}
+
+#btn-play{
+    color: black;
+    padding: .5rem;
+    margin: .5rem;
+    border-radius: 2rem;
+}
+
+#btn-hit{
+    color: black;
+    padding: .5rem;
+    margin: .5rem;
+    border-radius: 2rem;
+}
+
+#btn-stand{
+    color: black;
+    padding: .5rem;
+    margin: .5rem;
+    border-radius: 2rem;
+}
+
+#btn-double{
+    color: black;
+    padding: .5rem;
+    margin: .5rem;
+    border-radius: 2rem;
+}
