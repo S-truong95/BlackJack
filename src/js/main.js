@@ -17,9 +17,13 @@ export default () => {
     const outcome = document.getElementById("outcome")
     var gameHistory = []
     var playerName = window.prompt("enter name")
+    const reset = document.getElementById("btn-reset")
+    
   
-    game.
     name.innerHTML = playerName;
+    reset.onclick = function(){
+        window.location.reload();
+    }
     playButton.onclick = function(){
         bust.innerHTML = ``;
         outcome.innerHTML = ``;
