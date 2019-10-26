@@ -7,21 +7,29 @@ export default () => {
     const hitButton = document.getElementById("btn-hit");
     const standButton = document.getElementById("btn-stand");
     const doubleButton = document.getElementById("btn-double");
-    const start = document.getElementById("start");
     const play = document.getElementById("play");
     const dealer = document.getElementById("dealer");
     const player = document.getElementById("player");
     const bust = document.getElementById("bust");
-    const result = game.outcome();
-
+    const name = document.getElementById("name")
+    const Result = BlackJack.Result;
+    const history = document.getElementById("history")
+    const outcome = document.getElementById("outcome")
+    var gameHistory = []
+    var playerName = window.prompt("enter name")
   
+    game.
+    name.innerHTML = playerName;
     playButton.onclick = function(){
         bust.innerHTML = ``;
+        outcome.innerHTML = ``;
+        history.innerHTML = gameHistory;
         start.innerHTML = `Your current chip count is: ${game.getUserChips()}`;
         
-        const wager = window.prompt("Ante");
+        var wager = window.prompt("Ante");
         game.receiveAnte(wager);
 
+        
         play.innerHTML = `Your bet is: ${wager}`;
         
         game.deal();
@@ -38,7 +46,11 @@ export default () => {
                 bust.innerHTML = `You Busted!!!`
                 hitButton.onclick = function(){}
                 game.settleDealerHand();
-            }
+                outcome.innerHTML =`"You lost...`
+                gameHistory.push("lost")
+                game.resetAnte();
+        }
+            game.settleDealerHand();
             game.resetPlayers();
 
         };
@@ -46,18 +58,37 @@ export default () => {
         standButton.onclick = function(){
             game.standUser();
             game.evaluateUser();
+            player.innerHTML = `Your hand: ${game.getUserHandValue()}`;
             game.settleDealerHand();
+            dealer.innerHTML = `Dealer hand: ${game.getDealerHandValue()}`;
+            switch (game.outcome()){
+                case Result.LOSS:
+                    outcome.innerHTML =`"You lost...`
+                    gameHistory.push("lost")
+                    game.resetAnte();
+                    break;
+                  case Result.PUSH:
+                    outcome.innerHTML= `Push... at least you get your money back!`
+                    gameHistory.push("push")
+                    game.pushHand();
+                  case Result.WIN:
+                    outcome.innerHTML =`Congrats!!! You win!!!`
+                    gameHistory.push("win")
+                    game.userWin();
+              
+                  default:
+                    break;           
+                }
             game.resetPlayers();
 
         };
 
         doubleButton.onclick = function(){
-            player.doubleUser();
+            game.doubleUser();
             game.evaluateUser();
             player.innerHTML = `Your hand: ${game.getUserHandValue()}`;
-            // update wager
             // check if bust
-            play.innerHTML = `Your bet is: ${wager}`;
+            play.innerHTML = `Your bet is: ${game.getAnte()}`;
             player.innerHTML = `Your hand: ${game.getUserHandValue()}`;
             game.settleDealerHand();
 
@@ -65,13 +96,16 @@ export default () => {
                 bust.innerHTML = `You Busted!!!`
                 hitButton.onclick = function(){}
                 game.settleDealerHand();
+                dealer.innerHTML = `Dealer hand: ${game.getDealerHandValue()}`;
+                outcome.innerHTML =`"You lost...`
+                gameHistory.push("lost")
+                game.resetAnte();
 
             }
             game.resetPlayers();
 
 
         };
-        
         
 
     }
