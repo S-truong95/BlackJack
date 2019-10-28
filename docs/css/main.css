@@ -44,3 +44,35 @@
     margin: .5rem;
     border-radius: 2rem;
 }
+
+#wrapper{
+    text-align: center;
+}
+
+#wrap{
+    margin-right: 40%;
+    margin-left: 40%;
+    margin-top: 10%;
+}
+
+#console{
+    min-height: 13rem;
+    min-width: 13rem;
+    max-width: 50rem;
+    background-color: white;
+}
+
+#buttons{
+    display: block;
+    text-align: center;
+}
+
+#header{
+    font-size: 4rem;
+    text-align: center;
+}
+
+#name, #history, #gameHistory{
+    font-size: 2rem;
+    text-align: center;
+}
